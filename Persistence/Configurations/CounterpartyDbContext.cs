@@ -23,6 +23,10 @@ public class CounterpartyDbContext : IEntityTypeConfiguration<Counterparty>
             .IsRequired();
 
         builder
+            .HasIndex(c => c.Name)
+            .IsUnique();
+
+        builder
             .HasMany(c => c.Contacts)
             .WithOne(c => c.Counterparty);
     }

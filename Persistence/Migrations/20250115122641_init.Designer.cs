@@ -12,7 +12,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(OmnilineDbContext))]
-    [Migration("20250115110933_init")]
+    [Migration("20250115122641_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -100,6 +100,9 @@ namespace Persistence.Migrations
                         .HasDefaultValueSql("now()");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("counterparty", (string)null);
                 });

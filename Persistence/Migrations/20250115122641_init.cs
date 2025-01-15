@@ -62,6 +62,12 @@ namespace Persistence.Migrations
                 table: "contact",
                 column: "Email",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_counterparty_Name",
+                table: "counterparty",
+                column: "Name",
+                unique: true);
         }
 
         /// <inheritdoc />

@@ -14,7 +14,9 @@ public class CounterpartyRepository(OmnilineDbContext context)
             .ToListAsync();
 
     public async Task<Counterparty?> FindAsync(int id)
-        => await context.Counterparty.FindAsync(id);
+        => await context.Counterparty
+            .Include(c => c.Contacts)
+            .FirstOrDefaultAsync(c => c.Id == id);
 
     public async Task<int> AddAsync(Counterparty counterparty)
     {
